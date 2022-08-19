@@ -4,10 +4,10 @@ import Cadastrousuario from "./pages/cadastroUsuario";
 
 export default function Routes(){
     return(
-        <BrowserRouter>
-                <Switch>
-                    <Route path={"/cadastrousuario"} component={Cadastrousuario} />
-                </Switch>
+<BrowserRouter>
+        <Switch>
+<Route path={"/cadastrousuario"} component={Cadastrousuario} />
+    </Switch>
         </BrowserRouter>
     )
 }
