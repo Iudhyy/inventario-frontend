@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+*{
+    margin:0;
+    padding:0;
+    outline: 0;
+    box-sizing: 0;
+}
+body{
+    font:400 14px 'Roboto', sans-serif;
+    background: #f0f0f5;
+    -webkit-font-smoothing:antialiased;
+}
+input,button,textarea, select{
+    font:400 14px 'Roboto', sans-serif;
+}
+select{
+    width: 100%;
+    border:1px solid #dcdce6;
+    border-radius: 5px;
+    margin:3px;
+    padding: 10px;
+}
+.dashboard-container{
+    display: flex;
+    height: 100vh;
+    padding:10px;
+    overflow: 'scroll initial';
+}
+table{
+    font:400 14px 'Roboto', sans-serif;
+    margin: 0 auto;
+}
+th, td{
+    border-bottom:1px solid #96d4d4;
+    text-align: left;
+    padding: 5px;
+}
+button{
+    cursor: pointer;
+}
+form input{
+    width: 100%;
+    border:1px solid #dcdce6;
+    border-radius: 5px;
+    margin:3px;
+    padding: 3px;
+}
+.form-cadastro{
+    width: 50%;
+    margin: 0 auto;
+}
+.form-cadastro input{
+    padding:10px;
+}
+.principal{
+    padding-top: 30px;
+    width: 80%;
+    background-color: #F0FFF0;
+    height: 90vh;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.menu{
+    width: 20%;
+    padding-top: 30px;
+    background-color: #F0FFF0;
+    height: 90vh;
+    border-radius: 5px;
+}
+.menu a{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    background-color: tomato;
+    color: #FFF;
+    border: solid 1px;
+    border-radius: 5px;
+    margin:5px;
+    padding: 12px 12px;
+    justify-content: center;
+}
+.menu a:hover{
+    background-color: #FFF;
+    color:red;
+}
+.head{
+    border-bottom: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.logoff{
+    position:absolute;
+    right: 0;
+    padding-left: 20px;
+}
+.button_new{
+    width: 50%;
+    margin: 0 auto;
+    text-align: right;
+}
+.button_save{
+    margin-top:10px;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: green;
+    border:0;
+    color:#FFF;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    transition: filter 0.2s;
+    padding: 10px;
+}
+.button_save:hover{
+    filter:brightness(90%);
+}
