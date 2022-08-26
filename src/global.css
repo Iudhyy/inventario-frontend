@@ -7,7 +7,7 @@
 }
 body{
     font:400 14px 'Roboto', sans-serif;
-    background: #f0f0f5;
+    background: rgb(233, 226, 226);
     -webkit-font-smoothing:antialiased;
 }
 input,button,textarea, select{
@@ -43,7 +43,7 @@ form input{
     border:1px solid #dcdce6;
     border-radius: 5px;
     margin:3px;
-    padding: 3px;
+    padding: 10px;
 }
 .form-cadastro{
     width: 50%;
