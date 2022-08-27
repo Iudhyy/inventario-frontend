@@ -8,7 +8,7 @@ export default function Dashboard(){
     <Menu />
     <div className="principal">
     <Head title="estou no Dashboard" />
-    <h1>estou no Dashboard</h1>
+    <h1>estou na Dashboard</h1>
     </div>
     
 </div>
