@@ -104,6 +104,7 @@ form input{
 .button_save{
     margin-top:10px;
     margin-bottom: 10px;
+    margin-left: 15px;
     width: 100%;
     background-color: green;
     border:0;

@@ -1,12 +1,12 @@
 import { FiLogOut } from "react-icons/fi"
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 export default function Head({title}){
-    const history = useHistory();
+    const navigate = useNavigate();
     const logoff=()=>{
-            // history.push("/");
-            window.location.href="/";
+            
+            navigate("/");
     }
     function saida() {
         confirmAlert({

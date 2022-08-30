@@ -1,13 +1,14 @@
 import React from "react";
 import logo from '../../assets/imagens/logo.jpg';
 import './styles.css';
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Logon(){
-    const history=useHistory();
+
+    const navigate=useNavigate();
 
 function logar(){
-    history.push("/dashboard");
+    navigate("/dashboard");
 }
 
  return(
