@@ -11,12 +11,9 @@ export default function Cadastrousuario(){
     
 
     function validaremail(){
-        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;  
-        if (!filter.test(email.value)) {
-        // alert('Please provide a valid email address');
-        // email.focus;
-        return false;
-     }  
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+       
     
     }
 
@@ -27,18 +24,25 @@ export default function Cadastrousuario(){
         e.preventDefault();
         let i=0;
         let errorMsg=[];
-        if(validaremail()==false){
-            errorMsg.push('Por favor coloque um email valido!\n'); 
-            i++;   
-        }
         if(nome.length<3){
             errorMsg.push("Campo nome tem menos de 3 caracteres\n");
             i++;
         }
+        if(email.length==0){
+            errorMsg.push("campo email esta vazio\n");
+            i++;
+        }
+
+       else if(!validaremail()){
+            errorMsg.push('Por favor coloque um email valido!\n'); 
+            i++;   
+        }
+
         if(senha.length<3){
             errorMsg.push("Campo senha tem menos de 3 caracteres\n");
             i++;
         }
+
         if(i==0){
             alert ("dados salvos com sucesso")
         }
@@ -62,7 +66,7 @@ export default function Cadastrousuario(){
                     />
                     <label>Email</label>
                     <input placeholder="e-mail@gmail.com"
-                    type="email"
+                    type="text"
                     value={email}
                     onChange={e=>setEmail(e.target.value)}
                     />
