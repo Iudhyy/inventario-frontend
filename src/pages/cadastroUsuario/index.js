@@ -42,9 +42,24 @@ export default function Cadastrousuario(){
             errorMsg.push("Campo senha tem menos de 3 caracteres\n");
             i++;
         }
+        else if(senha!==confirmar){
+            errorMsg.push("Senha e confirmação não conferem\n");
+            i++;
+        }
 
         if(i==0){
-            alert ("dados salvos com sucesso")
+            
+            setMsg("");
+            let lista = JSON.parse(localStorage.getItem("cad-usuarios")||"[]");
+            lista.push(
+                {
+                    id:1,
+                    nome:nome,
+                    email:email,
+                    senha:senha
+                }
+            )
+            localStorage.setItem("cad-usuarios",JSON.stringify(lista));
         }
 
          else{
