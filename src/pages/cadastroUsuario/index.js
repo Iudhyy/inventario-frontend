@@ -53,13 +53,14 @@ export default function Cadastrousuario(){
             let lista = JSON.parse(localStorage.getItem("cad-usuarios")||"[]");
             lista.push(
                 {
-                    id:1,
+                    id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
                     nome:nome,
                     email:email,
                     senha:senha
                 }
             )
             localStorage.setItem("cad-usuarios",JSON.stringify(lista));
+            alert("dados salvos com sucesso!")
         }
 
          else{
