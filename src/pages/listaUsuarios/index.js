@@ -8,6 +8,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 export default function ListaUsuarios(){
     const [dados,setDados]=useState([]);
+    const [row,setRow] = useState(0);
     useEffect(()=>{
                 mostrardados();
     },[])
@@ -42,6 +43,7 @@ export default function ListaUsuarios(){
     function mostrardados(){
         let lista =JSON.parse(localStorage.getItem("cad-usuarios")||"[]");
         setDados(lista);
+        setRow(lista.length);
     }
 
  return(
@@ -50,6 +52,15 @@ export default function ListaUsuarios(){
 
     <div className="principal">
     <Head title="Lista de Usuarios" />
+      <div className="button_new">
+       <a href="/cadastrousuario">
+       <FiFilePlus
+          size={24}
+          color="green"
+          cursor="pointer"
+        />
+       </a>
+      </div>
             <table>
                 <tr>
                     <th>Id</th>
@@ -86,6 +97,11 @@ export default function ListaUsuarios(){
                         )
                     })
                 }
+                <tr>
+                  <td colSpan={3}>Total</td>
+                  <td colSpan={2}> {row} </td>
+                </tr>
+
             </table>
     </div>
     

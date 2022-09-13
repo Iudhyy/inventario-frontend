@@ -1,13 +1,17 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import Head from "../../componentes/Head";
 import Menu from "../../componentes/Menu";
+import { useNavigate } from "react-router-dom";
 
 export default function Cadastrousuario(){
+    const navigate = useNavigate();
     const [nome,setNome] = useState("");
     const [email,setEmail] = useState("");
     const [senha,setSenha] = useState("");
     const [confirmar,setConfirmar] = useState("");
     const [msg,setMsg] = useState("");
+    const [dados,setDados]=useState([]);
+    
     
 
     function validaremail(){
@@ -15,6 +19,23 @@ export default function Cadastrousuario(){
         return re.test(email);
        
     
+    }
+
+    useEffect(()=>{
+        mostrardados();
+    },[])
+    function mostrardados(){
+    let lista =JSON.parse(localStorage.getItem("cad-usuarios")||"[]");
+    setDados(lista);
+    }
+
+    function verificarduplicidade(email){
+        let dadosnovos = [];
+        dadosnovos = dados.filter(item=>item.email==email);
+        if(dadosnovos.length>0){
+            return true
+        }
+            return false;
     }
 
     
@@ -26,6 +47,10 @@ export default function Cadastrousuario(){
         let errorMsg=[];
         if(nome.length<3){
             errorMsg.push("Campo nome tem menos de 3 caracteres\n");
+            i++;
+        }
+        if(verificarduplicidade(email)==true){
+            errorMsg.push("o email fornecido ja esta cadastrado\n");
             i++;
         }
         if(email.length==0){
@@ -60,7 +85,8 @@ export default function Cadastrousuario(){
                 }
             )
             localStorage.setItem("cad-usuarios",JSON.stringify(lista));
-            alert("dados salvos com sucesso!")
+            alert("dados salvos com sucesso!");
+            navigate("/listausuarios");
         }
 
          else{
