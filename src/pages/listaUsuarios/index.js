@@ -4,9 +4,11 @@ import Menu from "../../componentes/Menu";
 import {FiEdit,FiDelete,FiFilePlus,FiTrash2} from "react-icons/fi";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
+import { useNavigate,Link} from "react-router-dom";
 
 
 export default function ListaUsuarios(){
+  const navigate=useNavigate();
     const [dados,setDados]=useState([]);
     const [row,setRow] = useState(0);
     useEffect(()=>{
@@ -14,7 +16,8 @@ export default function ListaUsuarios(){
     },[])
 
     function editar(id){
-        alert(`editar ${id}`);
+        navigate(`/editarusuario/${id}`)
+        
     }
     
     function excluir(id) {
@@ -32,7 +35,8 @@ export default function ListaUsuarios(){
                 let dadosnovos = [];
                 dadosnovos = dados.filter(item=>item.id!=id);
                 setDados(dadosnovos);
-                localStorage.setItem('cad-usuarios',JSON.stringify(dadosnovos))
+                localStorage.setItem('cad-usuarios',JSON.stringify(dadosnovos));
+                setRow(dadosnovos.length);
               }
             }
           ]
@@ -77,6 +81,7 @@ export default function ListaUsuarios(){
                                 <td>{usu.nome}</td>
                                 <td>{usu.email}</td>
                                 <td>
+                                  
                                     <FiEdit
                                     color="blue"
                                     size={18}
@@ -98,7 +103,7 @@ export default function ListaUsuarios(){
                     })
                 }
                 <tr>
-                  <td colSpan={3}>Total</td>
+                  <td colSpan={3} style={{textAlign:"right",fontWeight:"bold"}}>Total</td>
                   <td colSpan={2}> {row} </td>
                 </tr>
 
