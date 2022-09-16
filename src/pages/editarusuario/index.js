@@ -32,6 +32,7 @@ export default function Editarusuario(){
         setNome(usu[0].nome);
         setEmail(usu[0].senha);
         setSenha(usu[0].senha);
+        setConfirmar(usu[0].senha);
     }
 
     function verificarduplicidade(email){
@@ -54,10 +55,7 @@ export default function Editarusuario(){
             errorMsg.push("Campo nome tem menos de 3 caracteres\n");
             i++;
         }
-        if(verificarduplicidade(email)==true){
-            errorMsg.push("o email fornecido ja esta cadastrado\n");
-            i++;
-        }
+       
         if(email.length==0){
             errorMsg.push("campo email esta vazio\n");
             i++;
@@ -80,16 +78,26 @@ export default function Editarusuario(){
         if(i==0){
             
             setMsg("");
+            let dadosnovos=[];
             let lista = JSON.parse(localStorage.getItem("cad-usuarios")||"[]");
-            lista.push(
-                {
-                    id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
-                    nome:nome,
-                    email:email,
-                    senha:senha
+           dadosnovos=lista.map((function(item){
+                if(item.id==id){
+                    return {
+                        id:id,
+                        nome:nome,
+                        email:email,
+                        senha:senha
+                    }
+                }else{
+                    return{
+                    id:item.id,
+                    nome:item.nome,
+                    email:item.email,
+                    senha:item.senha
+                    }
                 }
-            )
-            localStorage.setItem("cad-usuarios",JSON.stringify(lista));
+           }));
+            localStorage.setItem("cad-usuarios",JSON.stringify(dadosnovos));
             alert("dados salvos com sucesso!");
             navigate("/listausuarios");
         }
