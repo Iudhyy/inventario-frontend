@@ -4,7 +4,7 @@ export default function Menu(){
         <div className="menu">
             <p> Menu</p>
             <a href="/listausuarios"><FiUser/>Usuários</a>
-            <a href=""><FiTruck/>Empresas</a>
+            <a href="/listaempresas"><FiTruck/>Empresas</a>
         </div>
     )
 }

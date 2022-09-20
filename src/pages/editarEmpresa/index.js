@@ -3,7 +3,7 @@ import Head from "../../componentes/Head";
 import Menu from "../../componentes/Menu";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function Editarusuario(){
+export default function Editarempresas(){
     const navigate = useNavigate();
     const {id} = useParams();
     const [nome,setNome] = useState("");
@@ -26,7 +26,7 @@ export default function Editarusuario(){
         mostrardados();
     },[])
     function mostrardados(){
-    let lista =JSON.parse(localStorage.getItem("cad-usuarios")||"[]");
+    let lista =JSON.parse(localStorage.getItem("cad-empresas")||"[]");
     setDados(lista);
     let usu = lista.filter(item=>item.id=id);
         setNome(usu[0].nome);
@@ -79,7 +79,7 @@ export default function Editarusuario(){
             
             setMsg("");
             let dadosnovos=[];
-            let lista = JSON.parse(localStorage.getItem("cad-usuarios")||"[]");
+            let lista = JSON.parse(localStorage.getItem("cad-empresas")||"[]");
            dadosnovos=lista.map((function(item){
                 if(item.id==id){
                     return {
@@ -97,9 +97,9 @@ export default function Editarusuario(){
                     }
                 }
            }));
-            localStorage.setItem("cad-usuarios",JSON.stringify(dadosnovos));
+            localStorage.setItem("cad-empresas",JSON.stringify(dadosnovos));
             alert("dados salvos com sucesso!");
-            navigate("/listausuarios");
+            navigate("/listaempresas");
         }
 
          else{
@@ -111,7 +111,7 @@ export default function Editarusuario(){
 <div className="dashboard-container">
     <Menu />
     <div className="principal">
-            <Head title="Cadastro de Usuários" />
+            <Head title="Cadastro de Empresas" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
                     <label>Nome</label>
