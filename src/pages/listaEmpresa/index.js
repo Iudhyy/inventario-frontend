@@ -16,7 +16,7 @@ export default function ListaEmpresas(){
     },[])
 
     function editar(id){
-        navigate(`/editarempresas/${id}`)
+        navigate(`/editarempresa/${id}`)
         
     }
     

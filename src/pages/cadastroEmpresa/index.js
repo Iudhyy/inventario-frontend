@@ -102,11 +102,11 @@ export default function Cadastroempresas(){
             <Head title="Cadastro de Empresas" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
-                    <label>ID</label>
+                    {/* <label>ID</label>
                     <input placeholder="ID"
                     value={id}
                     onChange={e=>setId(e.target.value)}
-                    />
+                    /> */}
                     <label>Nome</label>
                     <input placeholder="e-mail@gmail.com"
                     type="text"
@@ -115,7 +115,7 @@ export default function Cadastroempresas(){
                     />
                     <label>Email</label>
                     <input 
-                    type="password"
+                    type="text"
                     value={email}
                     onChange={e=>setEmail(e.target.value)}
                     />
