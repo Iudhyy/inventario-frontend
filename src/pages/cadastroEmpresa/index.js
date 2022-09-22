@@ -113,15 +113,15 @@ export default function Cadastroempresas(){
                     value={nome}
                     onChange={e=>setNome(e.target.value)}
                     />
-                    <label>Email</label>
+                    <label>Responsavel</label>
                     <input 
                     type="text"
                     value={email}
                     onChange={e=>setEmail(e.target.value)}
                     />
-                    <label>Senha</label>
+                    <label>Contato</label>
                     <input 
-                    type="password"
+                    type="text"
                     value={senha}
                     onChange={e=>setSenha(e.target.value)}
                     />

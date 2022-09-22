@@ -3,7 +3,7 @@ import Head from "../../componentes/Head";
 import Menu from "../../componentes/Menu";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function Editarempresas(){
+export default function EditarPatrimonio(){
     const navigate = useNavigate();
     const {id} = useParams();
     const [nome,setNome] = useState("");
@@ -26,7 +26,7 @@ export default function Editarempresas(){
         mostrardados();
     },[])
     function mostrardados(){
-    let lista =JSON.parse(localStorage.getItem("cad-empresas")||"[]");
+    let lista =JSON.parse(localStorage.getItem("cad-patrimonio")||"[]");
     setDados(lista);
     let usu = lista.filter(item=>item.id=id);
         setNome(usu[0].nome);
@@ -79,7 +79,7 @@ export default function Editarempresas(){
             
             setMsg("");
             let dadosnovos=[];
-            let lista = JSON.parse(localStorage.getItem("cad-empresas")||"[]");
+            let lista = JSON.parse(localStorage.getItem("cad-patrimonio")||"[]");
            dadosnovos=lista.map((function(item){
                 if(item.id==id){
                     return {
@@ -97,9 +97,9 @@ export default function Editarempresas(){
                     }
                 }
            }));
-            localStorage.setItem("cad-empresas",JSON.stringify(dadosnovos));
+            localStorage.setItem("cad-patrimonio",JSON.stringify(dadosnovos));
             alert("dados salvos com sucesso!");
-            navigate("/listaempresas");
+            navigate("/listapatrimonio");
         }
 
          else{
@@ -111,7 +111,7 @@ export default function Editarempresas(){
 <div className="dashboard-container">
     <Menu />
     <div className="principal">
-            <Head title="Editar Empresa" />
+            <Head title="Editar Patrimônio" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
                     <label>Nome</label>
