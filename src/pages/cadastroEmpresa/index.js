@@ -5,22 +5,23 @@ import { useNavigate } from "react-router-dom";
 
 export default function Cadastroempresas(){
     const navigate = useNavigate();
-    const [id,setId] = useState ("");
+    const[id,setId] = useState("");
     const [nome,setNome] = useState("");
-    const [email,setEmail] = useState("");
-    const [senha,setSenha] = useState("");
+    // const [email,setEmail] = useState("");
+    const [responsavel,setResponsavel] = useState("");
+    const [contato,setContato] = useState("");
     // const [confirmar,setConfirmar] = useState("");
     const [msg,setMsg] = useState("");
     const [dados,setDados]=useState([]);
     
     
 
-    function validaremail(){
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
+    // function validaremail(){
+    //     var re = /\S+@\S+\.\S+/;
+    //     return re.test(email);
        
     
-    }
+    // }
 
     useEffect(()=>{
         mostrardados();
@@ -30,14 +31,14 @@ export default function Cadastroempresas(){
     setDados(lista);
     }
 
-    function verificarduplicidade(email){
-        let dadosnovos = [];
-        dadosnovos = dados.filter(item=>item.email==email);
-        if(dadosnovos.length>0){
-            return true
-        }
-            return false;
-    }
+    // function verificarduplicidade(email){
+    //     let dadosnovos = [];
+    //     dadosnovos = dados.filter(item=>item.email==email);
+    //     if(dadosnovos.length>0){
+    //         return true
+    //     }
+    //         return false;
+    // }
 
     
 
@@ -50,21 +51,21 @@ export default function Cadastroempresas(){
             errorMsg.push("Campo nome tem menos de 3 caracteres\n");
             i++;
         }
-        if(verificarduplicidade(email)==true){
-            errorMsg.push("o email fornecido ja esta cadastrado\n");
-            i++;
-        }
-        if(email.length==0){
+        // if(verificarduplicidade(email)==true){
+        //     errorMsg.push("o email fornecido ja esta cadastrado\n");
+        //     i++;
+        // }
+        if(nome.length==0){
             errorMsg.push("campo email esta vazio\n");
             i++;
         }
 
-       else if(!validaremail()){
-            errorMsg.push('Por favor coloque um email valido!\n'); 
-            i++;   
-        }
+    //    else if(!validaremail()){
+    //         errorMsg.push('Por favor coloque um email valido!\n'); 
+    //         i++;   
+    //     }
 
-        if(senha.length<3){
+        if(contato.length<3){
             errorMsg.push("Campo senha tem menos de 3 caracteres\n");
             i++;
         }
@@ -81,8 +82,8 @@ export default function Cadastroempresas(){
                 {
                     id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
                     nome:nome,
-                    email:email,
-                    senha:senha
+                    responsavel:responsavel,
+                    contato:contato
                 }
             )
             localStorage.setItem("cad-empresas",JSON.stringify(lista));
@@ -102,28 +103,28 @@ export default function Cadastroempresas(){
             <Head title="Cadastro de Empresas" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
-                    {/* <label>ID</label>
-                    <input placeholder="ID"
+                <label>id</label>
+                    <input placeholder="id"
                     value={id}
                     onChange={e=>setId(e.target.value)}
-                    /> */}
-                    <label>Nome</label>
-                    <input placeholder="e-mail@gmail.com"
+                    />
+                    <label>nome</label>
+                    <input placeholder="nome"
                     type="text"
                     value={nome}
                     onChange={e=>setNome(e.target.value)}
                     />
-                    <label>Responsavel</label>
-                    <input 
+                    <label>responsavel</label>
+                    <input placeholder="responsavel"
                     type="text"
-                    value={email}
-                    onChange={e=>setEmail(e.target.value)}
+                    value={responsavel}
+                    onChange={e=>setResponsavel(e.target.value)}
                     />
                     <label>Contato</label>
-                    <input 
+                    <input placeholder="contato"
                     type="text"
-                    value={senha}
-                    onChange={e=>setSenha(e.target.value)}
+                    value={contato}
+                    onChange={e=>setContato(e.target.value)}
                     />
                     <button className="button_save" type="submit" >
                         Salvar

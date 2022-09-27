@@ -5,22 +5,22 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditarPatrimonio(){
     const navigate = useNavigate();
-    const {id} = useParams();
+    // const {id} = useParams();
+    const [id,setId] = useState ("");
     const [nome,setNome] = useState("");
-    const [email,setEmail] = useState("");
-    const [senha,setSenha] = useState("");
+    const [data,setData] = useState("");
     const [confirmar,setConfirmar] = useState("");
     const [msg,setMsg] = useState("");
     const [dados,setDados]=useState([]);
     
     
 
-    function validaremail(){
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
+    // function validaremail(){
+    //     var re = /\S+@\S+\.\S+/;
+    //     return re.test(email);
        
     
-    }
+    // }
 
     useEffect(()=>{
         mostrardados();
@@ -29,10 +29,10 @@ export default function EditarPatrimonio(){
     let lista =JSON.parse(localStorage.getItem("cad-patrimonio")||"[]");
     setDados(lista);
     let usu = lista.filter(item=>item.id=id);
+        setId(usu[0].id);
         setNome(usu[0].nome);
-        setEmail(usu[0].senha);
-        setSenha(usu[0].senha);
-        setConfirmar(usu[0].senha);
+        setData(usu[0].data);
+        // setConfirmar(usu[0].senha);
     }
 
     // function verificarduplicidade(email){
@@ -51,29 +51,29 @@ export default function EditarPatrimonio(){
         e.preventDefault();
         let i=0;
         let errorMsg=[];
-        if(nome.length<3){
+        if(id.length<3){
             errorMsg.push("Campo nome tem menos de 3 caracteres\n");
             i++;
         }
        
-        if(email.length==0){
+        if(nome.length==0){
             errorMsg.push("campo email esta vazio\n");
             i++;
         }
 
-       else if(!validaremail()){
-            errorMsg.push('Por favor coloque um email valido!\n'); 
-            i++;   
-        }
+    //    else if(!validaremail()){
+    //         errorMsg.push('Por favor coloque um email valido!\n'); 
+    //         i++;   
+    //     }
 
-        if(senha.length<3){
+        if(data.length<3){
             errorMsg.push("Campo senha tem menos de 3 caracteres\n");
             i++;
         }
-        else if(senha!==confirmar){
-            errorMsg.push("Senha e confirmação não conferem\n");
-            i++;
-        }
+        // else if(senha!==confirmar){
+        //     errorMsg.push("Senha e confirmação não conferem\n");
+        //     i++;
+        // }
 
         if(i==0){
             
@@ -85,8 +85,8 @@ export default function EditarPatrimonio(){
                     return {
                         id:id,
                         nome:nome,
-                        email:email,
-                        senha:senha
+                        data:data,
+                        
                     }
                 }else{
                     return{
@@ -114,28 +114,28 @@ export default function EditarPatrimonio(){
             <Head title="Editar Patrimônio" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
+                <label>ID</label>
+                    <input placeholder="ID"
+                    value={id}
+                    onChange={e=>setId(e.target.value)}
+                    />
                     <label>Nome</label>
-                    <input placeholder="Nome"
+                    <input placeholder="e-mail@gmail.com"
+                    type="text"
                     value={nome}
                     onChange={e=>setNome(e.target.value)}
                     />
-                    <label>Email</label>
-                    <input placeholder="e-mail@gmail.com"
+                    {/* <label>Email</label>
+                    <input 
                     type="text"
                     value={email}
                     onChange={e=>setEmail(e.target.value)}
-                    />
-                    <label>Senha</label>
+                    /> */}
+                    <label>Data de Aquisição</label>
                     <input 
-                    type="password"
-                    value={senha}
-                    onChange={e=>setSenha(e.target.value)}
-                    />
-                    <label>Confirmar Senha</label>
-                    <input 
-                    type="password"
-                    value={confirmar}
-                    onChange={e=>setConfirmar(e.target.value)}
+                    type="text"
+                    value={data}
+                    onChange={e=>setData(e.target.value)}
                     />
                     <button className="button_save" type="submit" >
                         Salvar

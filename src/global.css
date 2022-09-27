@@ -80,8 +80,8 @@ form input{
     justify-content: center;
 }
 .menu a:hover{
-    background-color: #FFF;
-    color:red;
+    background-color: black;
+    color:cyan;
 }
 .head{
     border-bottom: 1px solid red;

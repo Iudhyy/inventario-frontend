@@ -6,9 +6,18 @@ import { useNavigate } from "react-router-dom";
 export default function CadastroLotacao(){
     const navigate = useNavigate();
     const [id,setId] = useState ("");
+    const [datalotacao,setDatalotacao] = useState ();
+    const [idemp,setIdemp] = useState ("");
+    const [idpat,setIdpat] = useState("");
+    const [idset,setIdset] = useState("");
+    const [idusu,setIdusu] = useState("");
     const [nome,setNome] = useState("");
     const [email,setEmail] = useState("");
     const [senha,setSenha] = useState("");
+    const [usuarios,setUsuarios]=useState([]);
+    const [empresa,setEmpresa]=useState([]);
+    const [setor,setSetor]=useState([]);
+    const [patrimonio,setPatrimonio]=useState([]);
     // const [confirmar,setConfirmar] = useState("");
     const [msg,setMsg] = useState("");
     const [dados,setDados]=useState([]);
@@ -27,6 +36,10 @@ export default function CadastroLotacao(){
     },[])
     function mostrardados(){
     let lista =JSON.parse(localStorage.getItem("cad-lotacao")||"[]");
+    setUsuarios(JSON.parse(localStorage.getItem("cad-usuarios")||"[]"))
+    setEmpresa(JSON.parse(localStorage.getItem("cad-empresas")||"[]"))
+    setSetor(JSON.parse(localStorage.getItem("cad-setor")||"[]"))
+    setPatrimonio(JSON.parse(localStorage.getItem("cad-patrimonio")||"[]"))
     setDados(lista);
     }
 
@@ -43,46 +56,21 @@ export default function CadastroLotacao(){
 
     function salvardados(e){
 
-        e.preventDefault();
-        let i=0;
-        let errorMsg=[];
-        if(nome.length<3){
-            errorMsg.push("Campo nome tem menos de 3 caracteres\n");
-            i++;
-        }
-        if(verificarduplicidade(email)==true){
-            errorMsg.push("o email fornecido ja esta cadastrado\n");
-            i++;
-        }
-        if(email.length==0){
-            errorMsg.push("campo email esta vazio\n");
-            i++;
-        }
+        // e.preventDefault();
+      
 
-       else if(!validaremail()){
-            errorMsg.push('Por favor coloque um email valido!\n'); 
-            i++;   
-        }
-
-        if(senha.length<3){
-            errorMsg.push("Campo senha tem menos de 3 caracteres\n");
-            i++;
-        }
-        // else if(senha!==confirmar){
-        //     errorMsg.push("Senha e confirmação não conferem\n");
-        //     i++;
-        // }
-
-        if(i==0){
+        if(idemp!==0 && idpat!==0 && idset!==0 && idusu!==0){
             
             setMsg("");
             let lista = JSON.parse(localStorage.getItem("cad-lotacao")||"[]");
             lista.push(
                 {
                     id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
-                    nome:nome,
-                    email:email,
-                    senha:senha
+                    idusu:idusu,
+                    idset:idset,
+                    idpat:idpat,
+                    idemp:idemp
+                  
                 }
             )
             localStorage.setItem("cad-lotacao",JSON.stringify(lista));
@@ -91,7 +79,7 @@ export default function CadastroLotacao(){
         }
 
          else{
-            setMsg(errorMsg);
+            setMsg("verifique todos os campos!!!!!");
         }
         
     }
@@ -102,44 +90,50 @@ export default function CadastroLotacao(){
             <Head title="Cadastro de Lotação" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
-                    <label>ID</label>
-                    <input placeholder="ID"
-                    value={id}
-                    onChange={e=>setId(e.target.value)}
-                    />
                     <label>ID_USU</label>
-                    <input placeholder="e-mail@gmail.com"
-                    type="text"
-                    value={nome}
-                    onChange={e=>setNome(e.target.value)}
+                    <input placeholder="ID"
+                  
+                    onChange={e=>setIdusu(e.target.value)}
                     />
-                    <label>ID_SET</label>
-                    <input 
-                    type="text"
-                    value={email}
-                    onChange={e=>setEmail(e.target.value)}
+                    <select 
+                    onChange={(e)=> setIdusu(e.target.value)}
+                    >
+                        {
+                            usuarios.map((usu)=>{
+                                return(
+                                    <option value={usu.id}> {usu.nome} </option>
+                                )
+                            })
+                        }
+                        
+                    </select>
+                    <label>ID_EMP</label>
+                    <input placeholder="ID"
+                  
+                    onChange={e=>setIdemp(e.target.value)}
                     />
-                    <label>ID_PAT</label>
-                    <input 
-                    type="text"
-                    value={email}
-                    onChange={e=>setEmail(e.target.value)}
-                    />  <label>ID_EMP</label>
-                    <input 
-                    type="text"
-                    value={email}
-                    onChange={e=>setEmail(e.target.value)}
-                    />
-                    <label>DATA_LOTACAO</label>
-                    <input 
-                    type="password"
-                    value={senha}
-                    onChange={e=>setSenha(e.target.value)}
+                    <select 
+                    onChange={(e)=> setIdemp(e.target.value)}
+                    >
+                        {
+                            usuarios.map((emp)=>{
+                                return(
+                                    <option value={emp.id}> {emp.nome} </option>
+                                )
+                            })
+                        }
+                        
+                    </select>
+                    <input
+                    type={"date"}
+                    value={datalotacao}
+                    onChange={(e)=> setDatalotacao(e.target.value)}
                     />
                     <button className="button_save" type="submit" >
                         Salvar
                     </button>
                     <pre>{msg}</pre>
+                    <pre>{idusu}</pre>
                 </form>
             </section>
     </div>

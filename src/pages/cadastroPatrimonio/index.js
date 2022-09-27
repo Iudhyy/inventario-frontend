@@ -7,20 +7,21 @@ export default function Cadastropatrimonio(){
     const navigate = useNavigate();
     const [id,setId] = useState ("");
     const [nome,setNome] = useState("");
-    const [email,setEmail] = useState("");
-    const [senha,setSenha] = useState("");
+    const [data,setData] = useState("");
+    // const [email,setEmail] = useState("");
+    // const [senha,setSenha] = useState("");
     // const [confirmar,setConfirmar] = useState("");
     const [msg,setMsg] = useState("");
     const [dados,setDados]=useState([]);
     
     
 
-    function validaremail(){
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
+    // function validaremail(){
+    //     var re = /\S+@\S+\.\S+/;
+    //     return re.test(email);
        
     
-    }
+    // }
 
     useEffect(()=>{
         mostrardados();
@@ -30,14 +31,14 @@ export default function Cadastropatrimonio(){
     setDados(lista);
     }
 
-    function verificarduplicidade(email){
-        let dadosnovos = [];
-        dadosnovos = dados.filter(item=>item.email==email);
-        if(dadosnovos.length>0){
-            return true
-        }
-            return false;
-    }
+    // function verificarduplicidade(email){
+    //     let dadosnovos = [];
+    //     dadosnovos = dados.filter(item=>item.email==email);
+    //     if(dadosnovos.length>0){
+    //         return true
+    //     }
+    //         return false;
+    // }
 
     
 
@@ -46,25 +47,25 @@ export default function Cadastropatrimonio(){
         e.preventDefault();
         let i=0;
         let errorMsg=[];
-        if(nome.length<3){
+        if(id.length<3){
             errorMsg.push("Campo nome tem menos de 3 caracteres\n");
             i++;
         }
-        if(verificarduplicidade(email)==true){
-            errorMsg.push("o email fornecido ja esta cadastrado\n");
-            i++;
-        }
-        if(email.length==0){
+        // if(verificarduplicidade(email)==true){
+        //     errorMsg.push("o email fornecido ja esta cadastrado\n");
+        //     i++;
+        // }
+        if(nome.length==0){
             errorMsg.push("campo email esta vazio\n");
             i++;
         }
 
-       else if(!validaremail()){
-            errorMsg.push('Por favor coloque um email valido!\n'); 
-            i++;   
-        }
+    //    else if(!validaremail()){
+    //         errorMsg.push('Por favor coloque um email valido!\n'); 
+    //         i++;   
+    //     }
 
-        if(senha.length<3){
+        if(data.length<3){
             errorMsg.push("Campo senha tem menos de 3 caracteres\n");
             i++;
         }
@@ -81,8 +82,8 @@ export default function Cadastropatrimonio(){
                 {
                     id:Date.now().toString(36)+Math.floor(Math.pow(10,12)+Math.random()*9*Math.pow(10,12)).toString(36),
                     nome:nome,
-                    email:email,
-                    senha:senha
+                    data:data,
+                    
                 }
             )
             localStorage.setItem("cad-patrimonio",JSON.stringify(lista));
@@ -121,9 +122,9 @@ export default function Cadastropatrimonio(){
                     /> */}
                     <label>Data de Aquisição</label>
                     <input 
-                    type="password"
-                    value={senha}
-                    onChange={e=>setSenha(e.target.value)}
+                    type="text"
+                    value={data}
+                    onChange={e=>setData(e.target.value)}
                     />
                     <button className="button_save" type="submit" >
                         Salvar
