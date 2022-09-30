@@ -9,7 +9,6 @@ import Editarusuario from "./pages/editarusuario";
 import Editarempresas from "./pages/editarEmpresa";
 import EditarPatrimonio from "./pages/editarPatrimonio";
 import EditarSetor from "./pages/editarSetor";
-import EditarLotaçao from "./pages/editarLotaçao";
 import ListaUsuarios from "./pages/listaUsuarios";
 import ListaEmpresas from "./pages/listaEmpresa";
 import ListaPatrimonio from "./pages/listapatrimonio";
@@ -17,6 +16,7 @@ import ListaSetor from "./pages/listaSetor";
 import ListaLotaçao from "./pages/listaLotação";
 import Dashboard from "./pages/dashboard";
 import Logon from "./pages/logon";
+import EditarLotacao from "./pages/editarLotaçao";
 
 
 export default function Rotas(){
@@ -52,7 +52,7 @@ export default function Rotas(){
 
             <Route path="/editarsetor/:id" element={<EditarSetor/>} />
 
-            <Route path="/editarlotaçao/:id" element={<EditarLotaçao/>} />
+            <Route path="/editarlotacao/:id" element={<EditarLotacao/>} />
 
             <Route path="/dashboard" element={<Dashboard/>} />
 

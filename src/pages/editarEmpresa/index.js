@@ -5,8 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function Editarempresas(){
     const navigate = useNavigate();
-    // const {id} = useParams();
-    const[id,setId] = useState("");
+    const {id} = useParams();
+    // const[id,setId] = useState("");
     const [nome,setNome] = useState("");
     // const [email,setEmail] = useState("");
     const [responsavel,setResponsavel] = useState("");
@@ -31,7 +31,7 @@ export default function Editarempresas(){
     setDados(lista);
     let usu = lista.filter(item=>item.id=id);
         setNome(usu[0].nome);
-        setId(usu[0].id);
+        // setId(usu[0].id);
         setResponsavel(usu[0].responsavel);
         setContato(usu[0].contato);
     }
@@ -115,11 +115,7 @@ export default function Editarempresas(){
             <Head title="Editar Empresa" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
-                    <label>id</label>
-                    <input placeholder="id"
-                    value={id}
-                    onChange={e=>setId(e.target.value)}
-                    />
+                   
                     <label>nome</label>
                     <input placeholder="nome"
                     type="text"

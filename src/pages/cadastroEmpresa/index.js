@@ -51,28 +51,14 @@ export default function Cadastroempresas(){
             errorMsg.push("Campo nome tem menos de 3 caracteres\n");
             i++;
         }
-        // if(verificarduplicidade(email)==true){
-        //     errorMsg.push("o email fornecido ja esta cadastrado\n");
-        //     i++;
-        // }
-        if(nome.length==0){
-            errorMsg.push("campo email esta vazio\n");
+        if(responsavel.length<3){
+            errorMsg.push("Campo responsável tem menos de 3 caracteres\n");
             i++;
         }
-
-    //    else if(!validaremail()){
-    //         errorMsg.push('Por favor coloque um email valido!\n'); 
-    //         i++;   
-    //     }
-
-        if(contato.length<3){
-            errorMsg.push("Campo senha tem menos de 3 caracteres\n");
+        if(contato.length<9){
+            errorMsg.push("Campo contato tem menos de 9 caracteres\n");
             i++;
         }
-        // else if(senha!==confirmar){
-        //     errorMsg.push("Senha e confirmação não conferem\n");
-        //     i++;
-        // }
 
         if(i==0){
             

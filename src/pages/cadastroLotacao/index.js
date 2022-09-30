@@ -43,14 +43,14 @@ export default function CadastroLotacao(){
     setDados(lista);
     }
 
-    function verificarduplicidade(email){
-        let dadosnovos = [];
-        dadosnovos = dados.filter(item=>item.email==email);
-        if(dadosnovos.length>0){
-            return true
-        }
-            return false;
-    }
+    // function verificarduplicidade(email){
+    //     let dadosnovos = [];
+    //     dadosnovos = dados.filter(item=>item.email==email);
+    //     if(dadosnovos.length>0){
+    //         return true
+    //     }
+    //         return false;
+    // }
 
     
 
@@ -59,7 +59,7 @@ export default function CadastroLotacao(){
         // e.preventDefault();
       
 
-        if(idemp!==0 && idpat!==0 && idset!==0 && idusu!==0){
+        if(idemp!=="" && idpat!=="" && idset!=="" && idusu!==""){
             
             setMsg("");
             let lista = JSON.parse(localStorage.getItem("cad-lotacao")||"[]");
@@ -90,40 +90,57 @@ export default function CadastroLotacao(){
             <Head title="Cadastro de Lotação" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
-                    <label>ID_USU</label>
-                    <input placeholder="ID"
-                  
-                    onChange={e=>setIdusu(e.target.value)}
-                    />
-                    <select 
-                    onChange={(e)=> setIdusu(e.target.value)}
-                    >
-                        {
-                            usuarios.map((usu)=>{
-                                return(
-                                    <option value={usu.id}> {usu.nome} </option>
-                                )
-                            })
-                        }
-                        
-                    </select>
-                    <label>ID_EMP</label>
-                    <input placeholder="ID"
-                  
-                    onChange={e=>setIdemp(e.target.value)}
-                    />
-                    <select 
-                    onChange={(e)=> setIdemp(e.target.value)}
-                    >
-                        {
-                            usuarios.map((emp)=>{
-                                return(
-                                    <option value={emp.id}> {emp.nome} </option>
-                                )
-                            })
-                        }
-                        
-                    </select>
+
+                <label>Usuário</label>
+                <select onChange={(e) => setIdusu(e.target.value)}                
+                >
+                    {
+                    usuarios.map((usu)=>{
+                        return(
+                            <option value={usu.id}>{usu.nome}</option>
+                        )
+                    })
+                } 
+                </select>
+
+                <label>Empresa</label>
+                <select onChange={(e) => setIdemp(e.target.value)}                
+                >
+                    {
+                    empresa.map((emp)=>{
+                        return(
+                            <option value={emp.id}>{emp.nome}</option>
+                        )
+                    })
+                } 
+                </select>
+
+                <label>Patrimônio</label>
+                <select onChange={(e) => setIdpat(e.target.value)}                
+                >
+                    {
+                    patrimonio.map((pat)=>{
+                        return(
+                            <option value={pat.id}>{pat.nome}</option>
+                        )
+                    })
+                } 
+                </select>
+
+                <label>Setor</label>
+                <select onChange={(e) => setIdset(e.target.value)}                
+                >
+                    {
+                    setor.map((set)=>{
+                        return(
+                            <option value={set.id}>{set.nome}</option>
+                        )
+                    })
+                } 
+                </select>
+
+
+                   
                     <input
                     type={"date"}
                     value={datalotacao}
@@ -133,7 +150,7 @@ export default function CadastroLotacao(){
                         Salvar
                     </button>
                     <pre>{msg}</pre>
-                    <pre>{idusu}</pre>
+                    <pre>{idset}</pre>
                 </form>
             </section>
     </div>

@@ -5,8 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function EditarPatrimonio(){
     const navigate = useNavigate();
-    // const {id} = useParams();
-    const [id,setId] = useState ("");
+    const {id} = useParams();
     const [nome,setNome] = useState("");
     const [data,setData] = useState("");
     const [confirmar,setConfirmar] = useState("");
@@ -25,11 +24,13 @@ export default function EditarPatrimonio(){
     useEffect(()=>{
         mostrardados();
     },[])
+
     function mostrardados(){
     let lista =JSON.parse(localStorage.getItem("cad-patrimonio")||"[]");
     setDados(lista);
     let usu = lista.filter(item=>item.id=id);
-        setId(usu[0].id);
+    
+    
         setNome(usu[0].nome);
         setData(usu[0].data);
         // setConfirmar(usu[0].senha);
@@ -114,13 +115,8 @@ export default function EditarPatrimonio(){
             <Head title="Editar Patrimônio" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
-                <label>ID</label>
-                    <input placeholder="ID"
-                    value={id}
-                    onChange={e=>setId(e.target.value)}
-                    />
                     <label>Nome</label>
-                    <input placeholder="e-mail@gmail.com"
+                    <input placeholder=""
                     type="text"
                     value={nome}
                     onChange={e=>setNome(e.target.value)}
@@ -133,7 +129,7 @@ export default function EditarPatrimonio(){
                     /> */}
                     <label>Data de Aquisição</label>
                     <input 
-                    type="text"
+                    type="date"
                     value={data}
                     onChange={e=>setData(e.target.value)}
                     />

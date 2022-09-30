@@ -19,6 +19,35 @@ export default function ListaLotacao(){
         navigate(`/editarlotacao/${id}`)
          
     }
+    function mostrarnomeusuario(id){
+      let lista=[];
+      let cadastro=[];
+      lista=JSON.parse(localStorage.getItem("cad-usuarios")||"[]");
+      cadastro = lista.filter(item=>item.id==id);
+      return cadastro[0].nome;
+    }
+
+    function mostrarnome(id,posicao){
+      let lista=[];
+      let cadastro=[];
+      if(posicao==1){
+        lista=JSON.parse(localStorage.getItem("cad-usuarios")||"[]");
+      }
+      if(posicao==2){
+        lista=JSON.parse(localStorage.getItem("cad-empresas")||"[]");
+      }
+      if(posicao==3){
+        lista=JSON.parse(localStorage.getItem("cad-patrimonio")||"[]");
+      }
+      if(posicao==4){
+        lista=JSON.parse(localStorage.getItem("cad-setor")||"[]");
+      }
+       
+     cadastro = lista.filter(item=>item.id==id);
+      return cadastro[0].nome;
+
+
+    }
     
     function excluir(id) {
         confirmAlert({
@@ -78,10 +107,12 @@ export default function ListaLotacao(){
                     dados.map((lot)=>{
                         return(
                             <tr key={lot.toString()}>
-                                <td>{lot.id}</td>
-                                <td>{lot.nome}</td>
-                                <td>{lot.responsavel}</td>
-                                <td>{lot.contato}</td>
+                              <td>{lot.id}</td>
+                                <td>{mostrarnome(lot.idusu,1)}</td>
+                                <td>{mostrarnome(lot.idemp,2)}</td>
+                                <td>{mostrarnome(lot.idpat,3)}</td>
+                                <td>{mostrarnome(lot.idset,4)}</td>
+                                <td>{lot.datalotacao}</td>
                                 <td>
                                   
                                     <FiEdit

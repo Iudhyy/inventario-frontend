@@ -7,20 +7,20 @@ export default function EditarSetor(){
     const navigate = useNavigate();
     const {id} = useParams();
     const [nome,setNome] = useState("");
-    const [email,setEmail] = useState("");
-    const [senha,setSenha] = useState("");
-    const [confirmar,setConfirmar] = useState("");
+    // const [email,setEmail] = useState("");
+    // const [senha,setSenha] = useState("");
+    // const [confirmar,setConfirmar] = useState("");
     const [msg,setMsg] = useState("");
     const [dados,setDados]=useState([]);
     
     
 
-    function validaremail(){
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
+    // function validaremail(){
+    //     var re = /\S+@\S+\.\S+/;
+    //     return re.test(email);
        
     
-    }
+    // }
 
     useEffect(()=>{
         mostrardados();
@@ -30,9 +30,9 @@ export default function EditarSetor(){
     setDados(lista);
     let usu = lista.filter(item=>item.id=id);
         setNome(usu[0].nome);
-        setEmail(usu[0].senha);
-        setSenha(usu[0].senha);
-        setConfirmar(usu[0].senha);
+        // setEmail(usu[0].senha);
+        // setSenha(usu[0].senha);
+        // setConfirmar(usu[0].senha);
     }
 
     // function verificarduplicidade(email){
@@ -56,24 +56,24 @@ export default function EditarSetor(){
             i++;
         }
        
-        if(email.length==0){
-            errorMsg.push("campo email esta vazio\n");
-            i++;
-        }
+    //     if(email.length==0){
+    //         errorMsg.push("campo email esta vazio\n");
+    //         i++;
+    //     }
 
-       else if(!validaremail()){
-            errorMsg.push('Por favor coloque um email valido!\n'); 
-            i++;   
-        }
+    //    else if(!validaremail()){
+    //         errorMsg.push('Por favor coloque um email valido!\n'); 
+    //         i++;   
+    //     }
 
-        if(senha.length<3){
-            errorMsg.push("Campo senha tem menos de 3 caracteres\n");
-            i++;
-        }
-        else if(senha!==confirmar){
-            errorMsg.push("Senha e confirmação não conferem\n");
-            i++;
-        }
+    //     if(senha.length<3){
+    //         errorMsg.push("Campo senha tem menos de 3 caracteres\n");
+    //         i++;
+    //     }
+    //     else if(senha!==confirmar){
+    //         errorMsg.push("Senha e confirmação não conferem\n");
+    //         i++;
+    //     }
 
         if(i==0){
             
@@ -85,15 +85,15 @@ export default function EditarSetor(){
                     return {
                         id:id,
                         nome:nome,
-                        email:email,
-                        senha:senha
+                        // email:email,
+                        // senha:senha
                     }
                 }else{
                     return{
                     id:item.id,
                     nome:item.nome,
-                    email:item.email,
-                    senha:item.senha
+                    // email:item.email,
+                    // senha:item.senha
                     }
                 }
            }));
@@ -119,7 +119,7 @@ export default function EditarSetor(){
                     value={nome}
                     onChange={e=>setNome(e.target.value)}
                     />
-                    <label>Email</label>
+                    {/* <label>Email</label>
                     <input placeholder="e-mail@gmail.com"
                     type="text"
                     value={email}
@@ -136,7 +136,7 @@ export default function EditarSetor(){
                     type="password"
                     value={confirmar}
                     onChange={e=>setConfirmar(e.target.value)}
-                    />
+                    /> */}
                     <button className="button_save" type="submit" >
                         Salvar
                     </button>

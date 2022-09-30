@@ -7,7 +7,7 @@ export default function Menu(){
 
             <a href="/listaempresas"><FiTruck/>Empresas</a>
 
-            <a href="/listapatrimonio"><FiBriefcase/>Patrimonio</a>
+            <a href="/listapatrimonio"><FiBriefcase/>Patrimônios</a>
 
             <a href="/listasetor"><FiLayers/>Setor</a>
 

@@ -47,10 +47,10 @@ export default function Cadastropatrimonio(){
         e.preventDefault();
         let i=0;
         let errorMsg=[];
-        if(id.length<3){
-            errorMsg.push("Campo nome tem menos de 3 caracteres\n");
-            i++;
-        }
+        // if(id.length<3){
+        //     errorMsg.push("Campo nome tem menos de 3 caracteres\n");
+        //     i++;
+        // }
         // if(verificarduplicidade(email)==true){
         //     errorMsg.push("o email fornecido ja esta cadastrado\n");
         //     i++;
@@ -103,13 +103,13 @@ export default function Cadastropatrimonio(){
             <Head title="Cadastro de Patrimônio" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
-                    <label>ID</label>
+                    {/* <label>ID</label>
                     <input placeholder="ID"
                     value={id}
                     onChange={e=>setId(e.target.value)}
-                    />
+                    /> */}
                     <label>Nome</label>
-                    <input placeholder="e-mail@gmail.com"
+                    <input placeholder=""
                     type="text"
                     value={nome}
                     onChange={e=>setNome(e.target.value)}
@@ -122,7 +122,7 @@ export default function Cadastropatrimonio(){
                     /> */}
                     <label>Data de Aquisição</label>
                     <input 
-                    type="text"
+                    type="date"
                     value={data}
                     onChange={e=>setData(e.target.value)}
                     />
