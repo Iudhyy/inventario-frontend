@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function CadastroLotacao(){
     const navigate = useNavigate();
-    const [id,setId] = useState ("");
+    // const [id,setId] = useState ("");
     const [datalotacao,setDatalotacao] = useState ();
     const [idemp,setIdemp] = useState ("");
     const [idpat,setIdpat] = useState("");
@@ -59,7 +59,8 @@ export default function CadastroLotacao(){
         // e.preventDefault();
       
 
-        if(idemp!=="" && idpat!=="" && idset!=="" && idusu!==""){
+        if(idemp.length!==0 && idpat.length!==0 && idset.length!==0 && idusu.length!==0)
+        {
             
             setMsg("");
             let lista = JSON.parse(localStorage.getItem("cad-lotacao")||"[]");
@@ -94,6 +95,7 @@ export default function CadastroLotacao(){
                 <label>Usuário</label>
                 <select onChange={(e) => setIdusu(e.target.value)}                
                 >
+                    <option></option>
                     {
                     usuarios.map((usu)=>{
                         return(
@@ -106,6 +108,8 @@ export default function CadastroLotacao(){
                 <label>Empresa</label>
                 <select onChange={(e) => setIdemp(e.target.value)}                
                 >
+                    <option></option>
+
                     {
                     empresa.map((emp)=>{
                         return(
@@ -118,6 +122,7 @@ export default function CadastroLotacao(){
                 <label>Patrimônio</label>
                 <select onChange={(e) => setIdpat(e.target.value)}                
                 >
+                    <option></option>
                     {
                     patrimonio.map((pat)=>{
                         return(
@@ -130,6 +135,7 @@ export default function CadastroLotacao(){
                 <label>Setor</label>
                 <select onChange={(e) => setIdset(e.target.value)}                
                 >
+                    <option></option>
                     {
                     setor.map((set)=>{
                         return(
