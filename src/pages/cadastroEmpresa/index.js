@@ -89,11 +89,11 @@ export default function Cadastroempresas(){
             <Head title="Cadastro de Empresas" />
             <section className="form-cadastro"> 
                 <form onSubmit={salvardados}>
-                <label>id</label>
+                {/* <label>id</label>
                     <input placeholder="id"
                     value={id}
                     onChange={e=>setId(e.target.value)}
-                    />
+                    /> */}
                     <label>nome</label>
                     <input placeholder="nome"
                     type="text"

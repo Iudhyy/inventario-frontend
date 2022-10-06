@@ -69,8 +69,8 @@ export default function ListaPatrimonio(){
                 <tr>
                     <th>Id</th>
                     <th>Nome</th>
-                    <th>Responsavel</th>
-                    <th>Contato</th>
+                    {/* <th>Responsavel</th> */}
+                    <th></th>
                     <th></th>
                     <th></th>
                 </tr>

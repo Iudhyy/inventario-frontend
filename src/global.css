@@ -7,7 +7,8 @@
 }
 body{
     font:400 14px 'Roboto', sans-serif;
-    background: rgb(233, 226, 226);
+    background-color: rgb(14, 13, 13);
+    /* background: rgb(233, 226, 226); */
     -webkit-font-smoothing:antialiased;
 }
 input,button,textarea, select{
@@ -15,7 +16,8 @@ input,button,textarea, select{
 }
 select{
     width: 100%;
-    border:1px solid #dcdce6;
+    border: 1px solid rgb(207, 186, 186);
+    /* border:1px solid #dcdce6; */
     border-radius: 5px;
     margin:3px;
     padding: 10px;
@@ -25,6 +27,7 @@ select{
     height: 100vh;
     padding:10px;
     overflow: 'scroll initial';
+    color: white;
 }
 table{
     font:400 14px 'Roboto', sans-serif;
@@ -55,7 +58,10 @@ form input{
 .principal{
     padding-top: 30px;
     width: 80%;
-    background-color: #F0FFF0;
+    background-color: black;
+    border-color: cyan;
+    color: white;
+    /* background-color: #F0FFF0; */
     height: 90vh;
     border-radius: 5px;
     margin-left: 10px;
@@ -63,7 +69,9 @@ form input{
 .menu{
     width: 20%;
     padding-top: 30px;
-    background-color: #F0FFF0;
+    background-color: black;
+    border: cyan;
+    /* background-color: #F0FFF0; */
     height: 90vh;
     border-radius: 5px;
 }
@@ -71,8 +79,11 @@ form input{
     text-decoration: none;
     display: flex;
     flex-direction: row;
-    background-color: tomato;
-    color: #FFF;
+    background-color: black;
+    margin-bottom: 50%;
+    
+    /* background-color: tomato; */
+    color: cyan;
     border: solid 1px;
     border-radius: 5px;
     margin:5px;
@@ -80,11 +91,11 @@ form input{
     justify-content: center;
 }
 .menu a:hover{
-    background-color: black;
-    color:cyan;
+    background-color: rgb(43, 37, 37);
+    color:white;
 }
 .head{
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid cyan;
     display: flex;
     justify-content: center;
     align-items: center;

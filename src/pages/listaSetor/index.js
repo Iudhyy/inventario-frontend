@@ -69,8 +69,8 @@ export default function ListaSetor(){
                 <tr>
                     <th>Id</th>
                     <th>Nome</th>
-                    <th>Responsavel</th>
-                    <th>Contato</th>
+                    <th></th>
+                    <th></th>
                     <th></th>
                     <th></th>
                 </tr>
