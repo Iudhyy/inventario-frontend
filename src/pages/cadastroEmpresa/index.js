@@ -21,7 +21,7 @@ export default function Cadastroempresas(){
     //     return re.test(email);
        
     
-    // }
+    // } 
 
     useEffect(()=>{
         mostrardados();
